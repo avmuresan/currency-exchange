@@ -1,0 +1,59 @@
+require:
+  - rubocop-rails
+
+Documentation:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true
+Style/GlobalVars:
+  AllowedVariables:
+    - $redis
+    - $houston
+Style/SymbolArray:
+  EnforcedStyle: brackets
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/LineLength:
+  Exclude:
+    - config/routes.rb
+    - config/initializers/**/*.rb
+Metrics/BlockLength:
+  Exclude:
+    - '**/*.rake'
+    - config/routes.rb
+    - test/**/*_test.rb
+
+AllCops:
+  TargetRubyVersion: 2.6.5
+  Exclude:
+    - node_modules/**/*
+    - script/**/*
+    - bin/**/*
+    - db/**/*
+    - app/views/**/*.slim

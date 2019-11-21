@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Currency Exchange
+    meta( name='viewport' content='width=device-width, initial-scale=1' )
+    meta( charset='UTF-8' )
+    = csrf_meta_tags
+    = stylesheet_pack_tag 'application'
+  body
+    .app-body
+    = javascript_pack_tag 'application'
+    script( type='text/javascript' data-bootstrap )
+      | bootstrap(#{ "#{initial_data}".html_safe });

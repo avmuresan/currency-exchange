@@ -1,0 +1,30 @@
+{
+  "name": "currency_exchange",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "^4.2.0",
+    "bootstrap-vue": "^2.0.0-rc.11",
+    "vue-datetime": "^1.0.0-beta.10",
+    "luxon": "^1.10.0",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "terser-webpack-plugin": "^2.0.1",
+    "underscore": "^1.8.3",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.2",
+    "vue-template-compiler": "^2.6.10",
+    "vue-resource": "^1.4.0",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-plugin-vue": "^5.2.3",
+    "stylelint": "^10.1.0",
+    "stylelint-scss": "^3.11.1",
+    "webpack-dev-server": "^3.9.0"
+  }
+}
