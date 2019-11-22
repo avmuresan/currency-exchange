@@ -1,24 +1,18 @@
-# README
+# Currency Exchange Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+In order to have this application running locally you will need to to the following :
 
-Things you may want to cover:
+* bundle install
 
-* Ruby version
+* yarn install
 
-* System dependencies
+Then
 
-* Configuration
+* rails server
 
-* Database creation
+`Locally, it needs a proper open exchange app_id, value which can either be set as a rails credential :open_exchange_app_id or simply adjust oxr.rb initializer.`
 
-* Database initialization
+The app is also available on https://currency-exchange-oex.herokuapp.com/ , try it out.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Unit tests can be executed using `rails test`
+While the linters for rubocop, stylelint and eslint can be executed using `bin/lint`
