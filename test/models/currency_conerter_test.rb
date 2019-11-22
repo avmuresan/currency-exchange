@@ -7,7 +7,7 @@ class CurrencyConverterTest < ActiveSupport::TestCase
 
   test 'should make the conversion for 3 days ago' do
     date = 3.days.ago.strftime('%Y-%m-%d')
-    rates = Rails.root.join('test/fixtures/currency-rates.json').read
+    rates = Rails.root.join('test', 'fixtures', 'currency-rates.json').read
     rates_json = JSON.parse(rates)
     Currency.stubs(:all).returns(rates_json['rates'].keys)
     Currency.stubs(:rates).with(date.to_date).returns(rates)
@@ -15,15 +15,15 @@ class CurrencyConverterTest < ActiveSupport::TestCase
     assert converter.valid?
 
     usd_amount = Money.new(100 * 100, 'EUR')
-      .exchange_to(CurrencyConverter::CURRENCY_SOURCE)
+                      .exchange_to(CurrencyConverter::CURRENCY_SOURCE)
     result = Money.new(usd_amount, CurrencyConverter::CURRENCY_SOURCE)
-      .exchange_to('RON')
+                  .exchange_to('RON')
     assert_equal result.to_f, converter.result.to_f
   end
 
   test 'should make the conversion for today' do
     date = Time.zone.now.strftime('%Y-%m-%d')
-    rates = Rails.root.join('test/fixtures/currency-rates.json').read
+    rates = Rails.root.join('test', 'fixtures', 'currency-rates.json').read
     rates_json = JSON.parse(rates)
     Currency.stubs(:all).returns(rates_json['rates'].keys)
     Currency.stubs(:rates).with(date.to_date).returns(rates)
@@ -31,15 +31,15 @@ class CurrencyConverterTest < ActiveSupport::TestCase
     assert converter.valid?
 
     usd_amount = Money.new(100 * 100, 'EUR')
-                     .exchange_to(CurrencyConverter::CURRENCY_SOURCE)
+                      .exchange_to(CurrencyConverter::CURRENCY_SOURCE)
     result = Money.new(usd_amount, CurrencyConverter::CURRENCY_SOURCE)
-                 .exchange_to('RON')
+                  .exchange_to('RON')
     assert_equal result.to_f, converter.result.to_f
   end
 
   test 'should be invalid when date is older than 3 months' do
     date = (3.months.ago - 1.day).strftime('%Y-%m-%d')
-    rates = Rails.root.join('test/fixtures/currency-rates.json').read
+    rates = Rails.root.join('test', 'fixtures', 'currency-rates.json').read
     rates_json = JSON.parse(rates)
     Currency.stubs(:all).returns(rates_json['rates'].keys)
     Currency.expects(:rates).never
@@ -68,7 +68,7 @@ class CurrencyConverterTest < ActiveSupport::TestCase
 
   test 'should be invalid when an error is raised' do
     date = Time.zone.now.strftime('%Y-%m-%d')
-    rates = Rails.root.join('test/fixtures/currency-rates.json').read
+    rates = Rails.root.join('test', 'fixtures', 'currency-rates.json').read
     rates_json = JSON.parse(rates)
     Currency.stubs(:all).returns(rates_json['rates'].keys)
     Currency.stubs(:rates).with(date.to_date).returns(rates)

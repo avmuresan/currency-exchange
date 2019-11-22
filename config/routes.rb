@@ -5,4 +5,10 @@ Rails.application.routes.draw do
       '/api'
     ].none? { |p| req.path.start_with?(p) }
   }
+
+  namespace :api do
+    get 'convert/:amount/:from/to/:to', controller: :currency_converter,
+                                        action: :convert,
+                                        constraints: { amount: /\d.+/ }
+  end
 end

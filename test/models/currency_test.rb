@@ -7,7 +7,7 @@ class CurrencyTest < ActiveSupport::TestCase
     end
 
     test 'should retrieve all currencies using a single rates call' do
-      rates = Rails.root.join('test/fixtures/currency-rates.json').read
+      rates = Rails.root.join('test', 'fixtures', 'currency-rates.json').read
       Currency.expects(:rates).returns(rates)
       rates_hash = JSON.parse(rates)
       assert_equal rates_hash['rates'].keys, Currency.all
@@ -32,7 +32,7 @@ class CurrencyTest < ActiveSupport::TestCase
       Currency.expects(:rates_url).with(Time.zone.now.strftime('%Y-%m-%d'))
               .returns('http://dummy.url')
 
-      rates = Rails.root.join('test/fixtures/currency-rates.json').read
+      rates = Rails.root.join('test', 'fixtures', 'currency-rates.json').read
       response = OpenStruct.new(read: rates)
       Currency.expects(:open).with(dummy_url).returns(response)
 
@@ -46,9 +46,9 @@ class CurrencyTest < ActiveSupport::TestCase
       dummy_url = 'http://dummy.url'
       date = Time.zone.now - 3.days
       Currency.expects(:rates_url).with(date.strftime('%Y-%m-%d'))
-          .returns('http://dummy.url')
+              .returns('http://dummy.url')
 
-      rates = Rails.root.join('test/fixtures/currency-rates.json').read
+      rates = Rails.root.join('test', 'fixtures', 'currency-rates.json').read
       response = OpenStruct.new(read: rates)
       Currency.expects(:open).with(dummy_url).returns(response)
 
