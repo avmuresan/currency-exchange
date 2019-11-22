@@ -5,7 +5,7 @@ Dir.chdir(path)
 
 # Available linters
 linters = {
-    sass: {
+    css: {
         command: './node_modules/.bin/stylelint app/assets/stylesheets app/**.css',
         options: '--config .stylelintrc.json --color'
     },

@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   namespace :api do
     get 'convert/:amount/:from/to/:to', controller: :currency_converter,
                                         action: :convert,
-                                        constraints: { amount: /\d.+/ }
+                                        constraints: { amount: /\d.*/ }
   end
 end
