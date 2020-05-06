@@ -13,10 +13,6 @@ input {
   text-align: right;
 }
 
-select {
-  direction: rtl;
-}
-
 option {
   direction: ltr;
 }

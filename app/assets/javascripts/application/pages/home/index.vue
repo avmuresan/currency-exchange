@@ -2,34 +2,32 @@
   .container
     .pricing-header.px-3.py-3.pt-md-5.pb-md-4.mx-auto.text-center
       h4 Exchange date
-      Datetime( v-model="date" :min-datetime="minDate" :max-datetime="maxDate" @input="dateChanged" :disabled="isLoading" )
+      b-form-datepicker.col-md-4.offset-md-4( v-model="date" :min="minDate" :max="maxDate" @input="dateChanged" :disabled="isLoading" )
     .card-deck.mb-3.text-center
+      .col-md-4
       CurrencyPicker( :providedAmount="formData.fromAmount"
                       :providedCurrency="formData.from"
-                      :currencies="currencies"
                       :disabled="isLoading"
                       :from="true"
                       @change="convert" )
 
       CurrencyPicker( :providedAmount="formData.toAmount"
                       :providedCurrency="formData.to"
-                      :currencies="currencies"
                       :disabled="isLoading"
                       :from="false"
                       @change="convert")
+      .col-md-4
 </template>
 
 <script>
 
   import Api from '$shared/api';
   import CurrencyPicker from './components/currency_picker';
-  import { Datetime } from 'vue-datetime';
   import moment from 'moment';
   import _ from 'underscore';
 
   export default {
     components: {
-      Datetime,
       CurrencyPicker
     },
     data() {
@@ -46,13 +44,6 @@
           to: 'EUR'
         }
       };
-    },
-    computed: {
-      currencies() {
-        return _.map(this.$store.getters['currencies/all'], (currency) => {
-          return { value: currency, text: currency };
-        });
-      }
     },
     methods: {
       dateChanged(newDate) {

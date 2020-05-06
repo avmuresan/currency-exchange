@@ -30,7 +30,6 @@ Vue.http.interceptors.push((request, next) => {
     const end = performance.now();
     const elapsed = parseInt(end - start);
     const q = queryParams(request);
-    console.log(`${request.method} ${request.url}${q} in ${elapsed}ms`);
     response.body = camelizeKeys(response.body);
   });
 });

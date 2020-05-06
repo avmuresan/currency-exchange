@@ -1,7 +1,12 @@
 <template lang="pug">
   .card.mb-4.shadow-sm
     .card-header
-      b-form-select( v-model="currency" :options="currencies" size="sm" class="mt-3" :disabled="disabled" @change="onChange" )
+      b-dropdown( class="mt-3" :disabled="disabled" :text="currency" :right="true" :block="true" role="presentation")
+        b-dropdown-item( v-for="option in currencies"
+                         :key="option"
+                         @click="changeCurrency(option)"
+                         link-class="text-right"
+                         :active="option === currency") {{ option }}
     .card-body
       b-form-input( v-model="amount" type="number" placeholder="Enter a value" :disabled="disabled" @blur="onChange" )
 </template>
@@ -11,7 +16,6 @@
   export default {
     props: {
       disabled: Boolean,
-      currencies: Array,
       providedCurrency: String,
       providedAmount: Number,
       from: Boolean
@@ -22,7 +26,16 @@
         amount: this.providedAmount
       };
     },
+    computed: {
+      currencies() {
+        return this.$store.getters['currencies/all'];
+      }
+    },
     methods: {
+      changeCurrency(currency) {
+        this.currency = currency;
+        this.onChange();
+      },
       onChange() {
         const payload = {
           from: this.from,
