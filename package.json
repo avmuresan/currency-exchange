@@ -6,7 +6,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^4.2.0",
     "bootstrap-vue": "^2.5.0",
-    "luxon": "^1.21.2",
+    "luxon": "^2.5.2",
     "moment": "^2.24.0",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
